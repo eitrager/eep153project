@@ -1,4 +1,4 @@
-# Repo for EEP 153 Project 1: Population**
+# Repo for EEP 153 Project 1: Population
 
 The Green Revolution (1940s–1970s) refers to a period of agricultural transformation driven by the adoption of high-yield crop varieties, improved irrigation systems, chemical fertilizers, pesticides, and modern farming techniques. In Asia, this technological change significantly impacted nations like India, Pakistan, and the Philippines, where staple crops such as rice and wheat were central to diets. Key innovations included the introduction of high-yielding varieties (HYVs), such as IR8 rice, and significant investments in agricultural infrastructure.
 
