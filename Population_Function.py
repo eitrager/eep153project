@@ -5,13 +5,29 @@ import wbdata
 
 def population(year,sex,age_range,place,graph = False):
     """
-    year: must be 4 digit year
-    sex: either "MA" for male or "FE" for female
-    age_range: a list of min and max age ex. [5,20] for ages 5 to 20 years old
-    place: 3 digit region code. ex "CHN" for China
-    graph: optional arg to generate a line plot of the age ranges. Set to either True or False
-    Example complete input: population(2021, 'FE', [7,23], 'JPN',graph = True)
-    output: total pop and optional graph
+    Calculate and visualize population data based on the given parameters.
+
+    Parameters:
+    -----------
+    year : int
+        A four-digit year (e.g., 2025).
+    sex : str
+        The sex category, either "MA" (male) or "FE" (female).
+    age_range : list of int
+        A list of two integers specifying the min and max age (e.g., [5, 20]).
+    place : str
+        A 3-character country code (e.g., "CHN" for China).
+    graph : bool, optional
+        Whether to generate a line plot (default is False).
+
+    Returns:
+    --------
+    int
+        The total population within the specified age range.
+
+    Example:
+    --------
+    population(2021, "FE", [7, 23], "JPN", graph=True)
     """
     first_term = "SP"
     second_term = "POP"
@@ -20,13 +36,19 @@ def population(year,sex,age_range,place,graph = False):
         agearrayspecific, popvalues = interpprep(age_ranges)
         age_array_all_years = interpfunc(popvalues, agearrayspecific, place, year, graph_values = graph)
         sliced_popvals = age_array_all_years[age_range[0]:age_range[1]]
-        return np.sum(sliced_popvals)
+        finaloutput = np.sum(sliced_popvals)
+        if finaloutput<2000:
+            return "No data for this year"
+        return finaloutput
     else:
         age_ranges = generateageranges(first_term, second_term, age_range, "FE", place, f"{year}-01-01")
         agearrayspecific, popvalues = interpprep(age_ranges)
         age_array_all_years = interpfunc(agearrayspecific, popvalues, place, year, graph_values = graph)
         sliced_popvals = age_array_all_years[age_range[0]:age_range[1]]
-        return np.sum(sliced_popvals)
+        finaloutput = np.sum(sliced_popvals)
+        if finaloutput<2000:
+            return "No data for this year"
+        return finaloutput
 #helper functions below
 def generateageranges (first_term, second_term, age_range, sex, countrylabel, yearstring):
     age_min = age_range[0] # assuming list input
