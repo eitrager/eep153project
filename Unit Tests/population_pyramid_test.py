@@ -17,20 +17,20 @@ class TestPlotPopulationPyramid(unittest.TestCase):
         index = pd.MultiIndex.from_tuples([("USA", "2025-01-01")], names=["Country", "Date"])
         
         # Mock population values
-        data = np.random.randint(1000000, 5000000, size=(1, len(columns)))  # Random values in millions
+        data = np.random.randint(1000000, 5000000, size=(1, len(columns)))  # random values
         
         df = pd.DataFrame(data, index=index, columns=columns)
 
-        # Call the function (should not raise errors)
+        # Call the function
         plot_population_pyramid(df, "USA", "2025-01-01")
 
-        # Ensure plt.show() was called (meaning plotting was attempted)
+        # Ensure plt.show() was called
         mock_show.assert_called_once()
 
     def test_missing_data(self):
         df = pd.DataFrame()  # Empty DataFrame
 
-        # Expecting a KeyError but should not crash
+        # KeyError (should NOT crash)
         with self.assertLogs() as log:
             plot_population_pyramid(df, "USA", "2025-01-01")
         

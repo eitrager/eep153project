@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-from deliverable import population  # Assuming `population` is in deliverable_file.py
+from Deliverable import population
 
 class TestPopulationFunction(unittest.TestCase):
     
